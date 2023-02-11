@@ -6,7 +6,7 @@ import {
   API_SUCCESS,
   GET_GIPHY_CATEGORIES,
   GET_GIPHY_SEARCH_SUGGESTIONS,
-  SELECTED_TYPE_OF_GIF,
+  TYPE_OF_GIF_API,
 } from '../types';
 
 export const getFilteredGiphyAction = _params => {
@@ -121,7 +121,7 @@ export const selectFilterTypeAction = type => {
   try {
     return async dispatch => {
       dispatch({
-        type: SELECTED_TYPE_OF_GIF,
+        type: TYPE_OF_GIF_API,
         payload: type,
       });
     };

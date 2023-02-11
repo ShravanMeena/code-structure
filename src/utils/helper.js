@@ -1,5 +1,20 @@
+import {Alert} from 'react-native';
 import {getFilteredGiphyAction} from '../redux/actions/giphyAction';
 import {Colors} from '../styles';
+
+// import {ToastAndroid} from 'react-native';
+
+export const showToast = error => {
+  Alert.alert('Error', error, [
+    {
+      text: 'Cancel',
+      onPress: () => console.log('Cancel Pressed'),
+      style: 'cancel',
+    },
+    {text: 'OK', onPress: () => console.log('OK Pressed')},
+  ]);
+  // ToastAndroid.show(error || 'Error occured', ToastAndroid.SHORT);
+};
 
 export const keyGenerator = () => '_' + Math.random().toString(36).substr(2, 9);
 
@@ -9,31 +24,31 @@ export const Capitalize = str => {
 
 export const handlerActions = (
   dispatch,
-  selectedTypeOfGif,
-  fromReducerPageNumber,
-  valuesFromReducer,
+  typeOfGif,
+  pageNumberFromStore,
+  lastQueryFromStore,
 ) => {
-  let page = fromReducerPageNumber + 1;
+  let page = pageNumberFromStore + 1;
 
-  if (selectedTypeOfGif === 'trending') {
+  if (typeOfGif === 'trending') {
     dispatch(getFilteredGiphyAction({page}));
   }
 
-  if (selectedTypeOfGif === 'search') {
+  if (typeOfGif === 'search') {
     dispatch(
       getFilteredGiphyAction({
         type: 'search',
-        values: {searchTerm: valuesFromReducer},
+        values: {searchTerm: lastQueryFromStore},
         page,
       }),
     );
   }
 
-  if (selectedTypeOfGif === 'category') {
+  if (typeOfGif === 'category') {
     dispatch(
       getFilteredGiphyAction({
         type: 'category',
-        values: {category: valuesFromReducer},
+        values: {category: lastQueryFromStore},
         page,
       }),
     );

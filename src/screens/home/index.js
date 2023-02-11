@@ -12,18 +12,16 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 // ui - components
-import Button from '../../ui/button';
 import GifImage from '../../components/GifImage';
 import WaitIndicator from '../../ui/loader';
 import Header from '../../components/Header';
-import Container from '../../ui/container';
 import SearchInput from './SearchInput';
 import Categories from '../../components/Categories';
+import {Button, Center, Container} from '../../ui';
 
 // helper
 import {handlerActions, keyGenerator} from '../../utils/helper';
 import {getFilteredGiphyAction} from '../../redux/actions/giphyAction';
-import Center from '../../ui/center';
 
 function MyGif({item}) {
   const [play, setPlay] = useState(false);
@@ -48,12 +46,12 @@ export default function HomeScreen() {
   const dispatch = useDispatch();
 
   const {
-    selectedTypeOfGif,
-    valuesFromReducer,
+    typeOfGif,
+    lastQueryFromStore,
     loading,
     isListEnd,
     moreLoading,
-    fromReducerPageNumber,
+    pageNumberFromStore,
     data,
   } = useSelector(state => state.giphyReducer);
 
@@ -72,9 +70,9 @@ export default function HomeScreen() {
       setPage(page + 1);
       handlerActions(
         dispatch,
-        selectedTypeOfGif,
-        fromReducerPageNumber,
-        valuesFromReducer,
+        typeOfGif,
+        pageNumberFromStore,
+        lastQueryFromStore,
       );
     }
   };

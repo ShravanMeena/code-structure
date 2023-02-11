@@ -1,3 +1,4 @@
+// I am working on it
 import {Dimensions, PixelRatio} from 'react-native';
 
 const WINDOW_WIDTH = Dimensions.get('window').width;

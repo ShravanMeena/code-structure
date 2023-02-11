@@ -1,4 +1,3 @@
-import {StyleSheet} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {useTheme} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
@@ -10,8 +9,7 @@ import {
 } from '../../redux/actions/giphyAction';
 
 // ui - components
-import Container from '../../ui/container';
-import Input from '../../ui/input';
+import {Container, Input} from '../../ui';
 
 // custom hooks
 import {useDebounce} from '../../hooks';

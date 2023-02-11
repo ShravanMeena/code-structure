@@ -1,7 +1,7 @@
 import {
   GET_GIPHY_CATEGORIES,
   GET_GIPHY_SEARCH_SUGGESTIONS,
-  SELECTED_TYPE_OF_GIF,
+  TYPE_OF_GIF_API,
   API_SUCCESS,
   API_REQUEST,
   API_LIST_END,
@@ -9,18 +9,18 @@ import {
 } from '../types';
 
 const initialState = {
-  categoriesData: [],
-  giphySuggestionsData: [],
+  categoriesData: [], // all list of categories
+  giphySuggestionsData: [], // someone type in input filed then if we want to show suggest some keyword to user
 
   loading: false,
   moreLoading: false,
   error: null,
   moreError: null,
-  data: [],
+  data: [], // gif data
   isListEnd: false,
-  selectedTypeOfGif: 'trending',
-  fromReducerPageNumber: 1,
-  valuesFromReducer: '', //selected value like searchQuery and selected category
+  typeOfGif: 'trending', //this is the type of gif:: means which type of api we call for ex type is trending or by category or via search
+  pageNumberFromStore: 1, // page number save in store so we can use infinite scrolliing
+  lastQueryFromStore: '', //selected value like searchQuery and selected category
 };
 
 function giphyReducer(state = initialState, action) {
@@ -30,8 +30,8 @@ function giphyReducer(state = initialState, action) {
     case GET_GIPHY_SEARCH_SUGGESTIONS:
       return {...state, giphySuggestionsData: action.payload};
 
-    case SELECTED_TYPE_OF_GIF:
-      return {...state, selectedTypeOfGif: action.payload};
+    case TYPE_OF_GIF_API:
+      return {...state, typeOfGif: action.payload};
 
     case API_REQUEST:
       if (action.page === 1) {
@@ -48,10 +48,10 @@ function giphyReducer(state = initialState, action) {
             ? action.payload
             : [...state.data, ...action.payload],
         error: '',
-        fromReducerPageNumber: action.page,
+        pageNumberFromStore: action.page,
         loading: false,
         moreLoading: false,
-        valuesFromReducer: action.values,
+        lastQueryFromStore: action.values,
       };
 
     case API_FAILURE:
@@ -60,7 +60,7 @@ function giphyReducer(state = initialState, action) {
         error: action.payload,
         loading: false,
         moreLoading: false,
-        valuesFromReducer: action.values,
+        lastQueryFromStore: action.values,
       };
 
     case API_LIST_END:
@@ -69,7 +69,7 @@ function giphyReducer(state = initialState, action) {
         isListEnd: action.payload,
         loading: false,
         moreLoading: false,
-        valuesFromReducer: action.values,
+        lastQueryFromStore: action.values,
       };
     default:
       return state;

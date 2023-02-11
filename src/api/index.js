@@ -1,7 +1,12 @@
 import axios from 'axios';
 import {Config} from '../config';
+import {showToast} from '../utils/helper';
 
 export const axiosRequestHandler = (method, data, url) => {
+  // method:: GET/POST/PUT/DELETE
+  // data: request Body (if get method then send null value)
+  // url : endpint
+
   axios.defaults.baseURL = Config.API_URL;
 
   let isAlreadyQueriesAvailableInUrl = url?.includes('?');
@@ -10,7 +15,6 @@ export const axiosRequestHandler = (method, data, url) => {
     url +
     `${isAlreadyQueriesAvailableInUrl ? '&' : '?'}api_key=${Config.API_KEY}`;
 
-  console.log(endpoint, ' :endpoint');
   return new Promise(resolve => {
     axios({
       method,
@@ -19,61 +23,31 @@ export const axiosRequestHandler = (method, data, url) => {
     })
       .then(res => {
         resolve(res.data);
+
+        // some time status code 200 but we need for error handling ::: TODO: THIS CODE ONLY FOR SHOWING YOU
+        // if (!res.data.success) {
+        //   showToast('some error goes here');
+        //   return;
+        // }
       })
       .catch(err => {
-        resolve(
-          'status: ' +
-            err.response.data?.meta?.status +
-            ' and err: ' +
-            err.response.data?.meta?.msg,
-        );
-      });
+        // we can handle error here for example :: i will give you some examples
+        let {status, msg} = err.response.data?.meta;
+        resolve(msg);
 
-    // axios({
-    //   method,
-    //   url,
-    //   data,
-    //   headers: {
-    //     // Authorization,
-    //     // session_trace_id,
-    //     // device: isFromWebView ? 'android' : 'web',
-    //     // user_id,
-    //   },
-    // })
-    //   .then(res => {
-    //     resolve(res);
-    //     if (!res?.data?.success) {
-    //       // ErrorToast({msg: res.data.error});
-    //     }
-    //   })
-    //   .catch(err => {
-    //     if (!err?.response) {
-    //       return;
-    //     }
-    //     // agr koi backend me kuchh fatta hain to: by akshat
-    //     resolve(err.response);
-    //     // if (err.response.status === 403) {
-    //     //   ErrorToast({
-    //     //     msg: 'Your account has been blocked by admin. Please contact support@khelgully.com',
-    //     //   });
-    //     //   set('logout', true);
-    //     //   return;
-    //     // }
-    //     // if found 500 or greate error status
-    //     if (err?.response?.status >= 500) {
-    //       // ErrorToast({
-    //       //   msg: isDev
-    //       //     ? _extra_err?.slice(6)
-    //       //     : 'Ooops something went wrong. Please try again after some time!',
-    //       // });
-    //     } else {
-    //       // if found 400 error
-    //       // ErrorToast({msg: err?.response?.data?.error?.message});
-    //       if (err?.response?.status === 401 || err?.response?.status === 403) {
-    //         // set('logout', true);
-    //         return;
-    //       }
-    //     }
-    //   });
+        if (status === 403) {
+          showToast('status code 403');
+          return;
+        } else if (status === 401) {
+          showToast('unauthorized status code');
+          return;
+        } else if (status === 500) {
+          showToast('Oops Error ! Something went wrong from server side');
+          return;
+        } else if (status === 400) {
+          showToast('Client side error');
+          return;
+        }
+      });
   });
 };

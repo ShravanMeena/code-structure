@@ -1,7 +1,6 @@
 import {View, StyleSheet, Switch} from 'react-native';
 import React, {useState} from 'react';
 import {useTheme} from '@react-navigation/native';
-import Button from '../ui/button';
 import {useDispatch, useSelector} from 'react-redux';
 import {themeTogglerAction} from '../redux/actions/themeAction';
 import {Colors} from '../styles';
@@ -10,11 +9,12 @@ import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
 } from '../redux/actions/giphyAction';
+import {Button} from '../ui';
 
 export default function Header() {
   const {colors} = useTheme();
   const dispatch = useDispatch();
-  const {selectedTypeOfGif} = useSelector(state => state.giphyReducer);
+  const {typeOfGif} = useSelector(state => state.giphyReducer);
   const [isEnabled, setIsEnabled] = useState(false);
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
@@ -42,8 +42,7 @@ export default function Header() {
     paddingVertical: 5,
     paddingHorizontal: 10,
     borderRadius: 4,
-    backgroundColor:
-      selectedTypeOfGif === 'trending' ? Colors.ALERT : Colors.PRIMARY,
+    backgroundColor: typeOfGif === 'trending' ? Colors.ALERT : Colors.PRIMARY,
   };
 
   return (

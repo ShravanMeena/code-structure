@@ -24,15 +24,15 @@ function Category({item}) {
   // theme colors
   const {colors} = useTheme();
 
-  const valuesFromReducer = useSelector(
-    state => state.giphyReducer?.valuesFromReducer,
+  const lastQueryFromStore = useSelector(
+    state => state.giphyReducer?.lastQueryFromStore,
   );
 
   var replaced = item.name?.split(' ')?.join('');
   let category = replaced?.split('&')?.join('-');
 
   // active tab conditions
-  let activeTab = valuesFromReducer?.includes(category);
+  let activeTab = lastQueryFromStore?.includes(category);
 
   const categoryViaFetchData = () => {
     dispatch(selectFilterTypeAction('category'));
