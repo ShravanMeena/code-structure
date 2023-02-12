@@ -37,10 +37,9 @@ const ErrorBoundaryTest = () => {
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
     padding: 8,
-    textAlign: 'center',
   },
+
   title: {
     fontSize: FONT_SIZE_16,
     fontWeight: 'bold',

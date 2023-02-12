@@ -3,6 +3,7 @@ import React, {useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {useTheme} from '@react-navigation/native';
 
+// actions
 import {
   getFilteredGiphyAction,
   getGiphyCategoriesActon,
@@ -10,13 +11,14 @@ import {
 } from '../redux/actions/giphyAction';
 
 // ui - components
-import Heading from '../ui/heading';
+import {Heading} from '../ui';
 
 // helper
 import {Capitalize, keyGenerator} from '../utils/helper';
 
 // styles
 import {Colors} from '../styles';
+// import {SCALE_10, SCALE_8} from 'src/styles/spacing';
 
 function Category({item}) {
   // theme colors
@@ -102,7 +104,7 @@ const styles = StyleSheet.create({
   },
   categoryTabs: {
     borderWidth: 1,
-    paddingVertical: 6,
+    paddingVertical: 8,
     paddingHorizontal: 10,
     marginRight: 10,
     borderRadius: 4,
