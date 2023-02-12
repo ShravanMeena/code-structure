@@ -1,4 +1,4 @@
-import {FlatList, StyleSheet, Pressable, ActivityIndicator} from 'react-native';
+import {FlatList, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 
 // selectors and actions
@@ -7,11 +7,10 @@ import {useDispatch, useSelector} from 'react-redux';
 // ui - components
 import {
   Header,
-  GifImage, // TODO: Waht i did here if click on gif then conditionaly changed image urls
-  // GifVideo, // TODO:: So if you want to play gif as a video show you can use video componets
   ErrorBoundaryTest,
   SearchInput,
   Categories,
+  MyGifCard,
 } from '@components';
 
 import {
@@ -29,37 +28,8 @@ import {handlerActions, keyGenerator} from '@utils/helper';
 import {getFilteredGiphyAction} from '@redux/actions/giphyAction';
 
 // styles
-import {BORDER_RADIUS_4, SCALE_10} from '@styles/spacing';
 import {FLEX_COLUMN_ALIGN_CENTER} from '@styles/typography';
 import {Colors} from '@styles';
-
-function MyGif({item}) {
-  const [play, setPlay] = useState(true);
-  const playAndPauseHandler = () => {
-    setPlay(!play);
-  };
-
-  // NOTE::TODO:: YES I CAN DESTRUCTURE
-
-  let {url, webp} = item.gif
-    ? item.gif?.images?.original
-    : item.images?.original;
-
-  // i get links which is playable from response
-  let playLinks = url;
-
-  // i get links which is not playble  from response this is only images
-  let pauseLinks = webp;
-
-  return (
-    <Pressable onPress={playAndPauseHandler} style={styles.item}>
-      {/* if you wants to use gif as image then you can use this one.... i am using GifImage componets */}
-      <GifImage uri={play ? playLinks : pauseLinks} />
-
-      {/* <GifVideo item={item} /> */}
-    </Pressable>
-  );
-}
 
 export default function HomeScreen() {
   const [page, setPage] = useState(1);
@@ -126,7 +96,7 @@ export default function HomeScreen() {
     </Center>
   );
 
-  const renderItem = ({item}) => <MyGif item={item} />;
+  const renderItem = ({item}) => <MyGifCard item={item} />;
   const memoizedValue = useMemo(() => renderItem, [data]);
 
   return (
@@ -162,12 +132,6 @@ export default function HomeScreen() {
 }
 
 const styles = StyleSheet.create({
-  item: {
-    borderRadius: BORDER_RADIUS_4,
-    marginVertical: SCALE_10,
-    backgroundColor: Colors.GRAY_MEDIUM,
-  },
-
   footer: {
     height: 500,
     ...FLEX_COLUMN_ALIGN_CENTER,

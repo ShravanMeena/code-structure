@@ -3,9 +3,9 @@ import {StyleSheet} from 'react-native';
 import ErrorBoundary from 'react-native-error-boundary';
 
 // ui - components
+import {Button, Center} from '@ui';
 import ComponentWithError from './ComponentWithError';
 import ErrorFallback from './ErrorFallback';
-import {Button, Center} from '@ui';
 
 // styles
 import {Colors} from '@styles';
@@ -23,7 +23,7 @@ const ErrorBoundaryTest = () => {
             color: Colors.WHITE,
           }}
           onPress={() => setIsErrorComponentVisible(true)}>
-          PRESS and Throw error
+          PRESS here to check crash handling
         </Button>
         {isErrorComponentVisible && <ComponentWithError />}
       </Center>
