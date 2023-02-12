@@ -70,6 +70,7 @@ export const handlerActions = (
           values: {category: lastQueryFromStore},
         }),
       );
+      break;
     default:
       return typeOfGif;
   }
