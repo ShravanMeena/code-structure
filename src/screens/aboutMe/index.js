@@ -1,5 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
+import VideoPlayer from 'react-native-video-player';
 
 // ui - components
 import {Center, Container, Heading, Description, Base, Button} from '../../ui';
@@ -16,6 +17,22 @@ export default function AboutMe() {
 
   return (
     <Base>
+      <VideoPlayer
+        video={require('../../assets/videos/dummy_video.mp4')}
+        // videoHeight={500}
+        // videoWidth={200}
+        thumbnail={{uri: 'https://baconmockup.com/370/210/'}}
+        endThumbnail={{uri: 'https://baconmockup.com/370/210/'}}
+        showDuration={true}
+        autoplay
+        controlsTimeout={2000}
+        disableControlsAutoHide={true}
+        // muted={true}
+        defaultMuted={true}
+        disableSeek={true}
+        pauseOnPress={true}
+      />
+
       <Button
         props_styles={{
           marginVertical: SCALE_18,

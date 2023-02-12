@@ -7,7 +7,8 @@ import {useDispatch, useSelector} from 'react-redux';
 // ui - components
 import {
   Header,
-  GifImage,
+  GifImage, // TODO: Waht i did here if click on gif then conditionaly changed image urls
+  // GifVideo, // TODO:: So if you want to play gif as a video show you can use video componets
   ErrorBoundaryTest,
   SearchInput,
   Categories,
@@ -33,18 +34,29 @@ import {FLEX_COLUMN_ALIGN_CENTER} from '../../styles/typography';
 import {Colors} from '../../styles';
 
 function MyGif({item}) {
-  const [play, setPlay] = useState(false);
+  const [play, setPlay] = useState(true);
   const playAndPauseHandler = () => {
     setPlay(!play);
   };
 
+  // NOTE::TODO:: YES I CAN DESTRUCTURE
+
+  let {url, webp} = item.gif
+    ? item.gif?.images?.original
+    : item.images?.original;
+
+  // i get links which is playable from response
+  let playLinks = url;
+
+  // i get links which is not playble  from response this is only images
+  let pauseLinks = webp;
+
   return (
     <Pressable onPress={playAndPauseHandler} style={styles.item}>
-      <GifImage
-        uri={
-          item.gif ? item?.gif.images?.original.url : item?.images?.original.url
-        }
-      />
+      {/* if you wants to use gif as image then you can use this one.... i am using GifImage componets */}
+      <GifImage uri={play ? playLinks : pauseLinks} />
+
+      {/* <GifVideo item={item} /> */}
     </Pressable>
   );
 }
