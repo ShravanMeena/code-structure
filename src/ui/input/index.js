@@ -1,8 +1,9 @@
 import {StyleSheet, TextInput} from 'react-native';
 import React from 'react';
 import {useTheme} from '@react-navigation/native';
+import {BORDER_RADIUS_6, SCALE_10} from '../../styles/spacing';
 
-export default function Input({setValue, placeholder, placeholderTextColor}) {
+export default function Input({setValue, placeholder}) {
   // theme colors
   const {colors} = useTheme();
 
@@ -24,11 +25,10 @@ export default function Input({setValue, placeholder, placeholderTextColor}) {
 
 const styles = StyleSheet.create({
   input: {
-    width: '100%',
     height: 50,
-    paddingHorizontal: 10,
-    marginTop: 10,
-    borderRadius: 6,
+    paddingHorizontal: SCALE_10,
+    marginTop: SCALE_10,
+    borderRadius: BORDER_RADIUS_6,
     borderWidth: 1,
   },
 });

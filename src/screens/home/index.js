@@ -1,10 +1,4 @@
-import {
-  View,
-  FlatList,
-  StyleSheet,
-  Pressable,
-  ActivityIndicator,
-} from 'react-native';
+import {FlatList, StyleSheet, Pressable, ActivityIndicator} from 'react-native';
 import React, {useEffect, useState} from 'react';
 
 // selectors and actions
@@ -18,11 +12,25 @@ import {
   ErrorBoundaryTest,
   SearchInput,
 } from '../../components';
-import {Button, Center, Container, Heading, Loader} from '../../ui';
+
+import {
+  Base,
+  Button,
+  Center,
+  Container,
+  Heading,
+  Loader,
+  Description,
+} from '../../ui';
 
 // helper
 import {handlerActions, keyGenerator} from '../../utils/helper';
 import {getFilteredGiphyAction} from '../../redux/actions/giphyAction';
+
+// styles
+import {BORDER_RADIUS_4, SCALE_10} from '../../styles/spacing';
+import {FLEX_COLUMN_ALIGN_CENTER} from '../../styles/typography';
+import {Colors} from '../../styles';
 
 function MyGif({item}) {
   const [play, setPlay] = useState(false);
@@ -46,7 +54,7 @@ export default function HomeScreen() {
 
   const dispatch = useDispatch();
 
-  // destruturing
+  // destructuring
   const {
     typeOfGif,
     lastQueryFromStore,
@@ -86,20 +94,27 @@ export default function HomeScreen() {
         <>
           <ErrorBoundaryTest />
           <Heading>No more GIPHY at the moment</Heading>
+          <Description>this is description</Description>
         </>
       )}
     </Center>
   );
 
   const renderEmpty = () => (
-    <Center>
+    <Center props_styles={styles.footer}>
       <Heading>No Data at the moment</Heading>
-      <Button onPress={() => requestAPI()}>Refresh</Button>
+      <Button
+        text_style={{
+          color: Colors.PRIMARY,
+        }}
+        onPress={() => requestAPI()}>
+        Refresh
+      </Button>
     </Center>
   );
 
   return (
-    <View style={styles.container}>
+    <Base>
       {/* top header for toggle theme and logo */}
       <Header />
       {/* text input for searching GIF */}
@@ -125,22 +140,19 @@ export default function HomeScreen() {
           />
         )}
       </Container>
-    </View>
+    </Base>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   item: {
-    borderRadius: 4,
-    marginVertical: 10,
-    backgroundColor: 'gray',
+    borderRadius: BORDER_RADIUS_4,
+    marginVertical: SCALE_10,
+    backgroundColor: Colors.GRAY_MEDIUM,
   },
+
   footer: {
-    height: 300,
-    display: 'flex',
-    alignItems: 'center',
+    height: 500,
+    ...FLEX_COLUMN_ALIGN_CENTER,
   },
 });

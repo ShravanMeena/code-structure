@@ -1,5 +1,6 @@
 import {THEME_TOGGLER} from '../types';
 
+// for theme toggle
 export const themeTogglerAction = theme => {
   try {
     return async dispatch => {
@@ -8,7 +9,6 @@ export const themeTogglerAction = theme => {
         payload: theme,
       });
     };
-    // eslint-disable-next-line no-unreachable
   } catch (error) {
     // Add custom logic to handle errors
     console.log(error, 'error');

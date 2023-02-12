@@ -18,7 +18,7 @@ import {Capitalize, keyGenerator} from '../utils/helper';
 
 // styles
 import {Colors} from '../styles';
-// import {SCALE_10, SCALE_8} from 'src/styles/spacing';
+import {BORDER_RADIUS_4, SCALE_10, SCALE_8} from '../styles/spacing';
 
 function Category({item}) {
   // theme colors
@@ -99,14 +99,14 @@ export default function Categories() {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
-    paddingHorizontal: 10,
+    marginVertical: SCALE_10,
+    paddingHorizontal: SCALE_10,
   },
   categoryTabs: {
     borderWidth: 1,
-    paddingVertical: 8,
-    paddingHorizontal: 10,
-    marginRight: 10,
-    borderRadius: 4,
+    paddingVertical: SCALE_8,
+    paddingHorizontal: SCALE_10,
+    marginRight: SCALE_10,
+    borderRadius: BORDER_RADIUS_4,
   },
 });

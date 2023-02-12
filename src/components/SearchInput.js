@@ -1,8 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import {useTheme} from '@react-navigation/native';
 import {useDispatch} from 'react-redux';
 
-// actions and selectors
+// actions
 import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
@@ -19,9 +18,6 @@ export default function SearchInput() {
 
   // Search term
   const [searchTerm, setSearchTerm] = useState('');
-
-  // theme colors
-  const {colors} = useTheme();
 
   // Debounce search term so that it only gives us latest value ...
   const debouncedSearchTerm = useDebounce(searchTerm, 500);

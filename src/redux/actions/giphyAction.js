@@ -1,4 +1,3 @@
-/* eslint-disable radix */
 import {axiosRequestHandler} from '../../api';
 import {
   API_FAILURE,
@@ -9,6 +8,7 @@ import {
   TYPE_OF_GIF_API,
 } from '../types';
 
+// get all type of gif by filter :: this is a common where we can call api with various conditions
 export const getFilteredGiphyAction = _params => {
   try {
     return async dispatch => {
@@ -17,29 +17,37 @@ export const getFilteredGiphyAction = _params => {
         page: _params?.page,
       });
 
-      let limit = 5;
-      let values = '';
+      let limit = 5; // how many data you want at a time
+      let valuesForStore = ''; // this is for save some value like search term so we can use in pagination
       let offset = parseInt(_params?.page - 1) * limit;
 
+      // the url for every api's end :: main use case of this is paass limit and offset
       let common_url = `limit=${limit}&offset=${offset}`;
 
+      // api for trending gif
       let url = `/trending?${common_url}`;
 
       if (_params) {
-        if (_params?.type === 'category') {
-          url = `/categories/${_params?.values.category}?${common_url}`;
-          values = _params?.values.category;
+        let {type, values} = _params;
+
+        // if this block execude means we need GIF with some category
+        if (type === 'category') {
+          url = `/categories/${values.category}?${common_url}`;
+          valuesForStore = values.category;
         }
-        if (_params?.type === 'search') {
-          url = `/search?q=${_params?.values.searchTerm}&${common_url}`;
-          values = _params?.values.searchTerm;
+
+        // if this block execude means we need GIF with search query
+        if (type === 'search') {
+          url = `/search?q=${values.searchTerm}&${common_url}`;
+          valuesForStore = _params?.values.searchTerm;
         }
       }
 
       const res = await axiosRequestHandler({method: 'get', url});
 
       if (res.data) {
-        if (res.data?.length < 5) {
+        // if response of data is less than our limit then we stop pagination
+        if (res.data?.length < limit) {
           dispatch({
             type: API_LIST_END,
             payload: true,
@@ -47,6 +55,7 @@ export const getFilteredGiphyAction = _params => {
           return;
         }
 
+        // always set false so we continue calling our apis
         dispatch({
           type: API_LIST_END,
           payload: false,
@@ -56,14 +65,14 @@ export const getFilteredGiphyAction = _params => {
           type: API_SUCCESS,
           payload: res.data,
           page: _params?.page,
-          values,
+          values: valuesForStore,
         });
       } else {
         console.log('Unable to fetch');
         dispatch({
           type: API_FAILURE,
           payload: res.data,
-          values,
+          values: valuesForStore,
         });
       }
     };
@@ -74,6 +83,7 @@ export const getFilteredGiphyAction = _params => {
   }
 };
 
+// get api call for get Types of category
 export const getGiphyCategoriesActon = () => {
   try {
     return async dispatch => {
@@ -95,6 +105,7 @@ export const getGiphyCategoriesActon = () => {
   }
 };
 
+// if we want to show some suggestion to user :then we use it
 export const giphySuggestionsAction = searchQuery => {
   try {
     return async dispatch => {
@@ -118,6 +129,7 @@ export const giphySuggestionsAction = searchQuery => {
   }
 };
 
+// it is define for which api we calll...example: -- : TYPE:SEARCH_API, CATEGORY_API, TRENDING_API
 export const selectFilterTypeAction = type => {
   try {
     return async dispatch => {

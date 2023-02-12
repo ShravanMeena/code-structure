@@ -1,52 +1,40 @@
 import * as React from 'react';
-import {View, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 import ErrorBoundary from 'react-native-error-boundary';
-import {useTheme} from '@react-navigation/native';
 
 // ui - components
 import ComponentWithError from './ComponentWithError';
 import ErrorFallback from './ErrorFallback';
-import {Button} from '../ui';
+import {Button, Center} from '../ui';
 
 // styles
-import {FONT_SIZE_16, FONT_SIZE_20} from '../styles/typography';
+import {Colors} from '../styles';
+import {SCALE_8} from '../styles/spacing';
 
 const ErrorBoundaryTest = () => {
   const [isErrorComponentVisible, setIsErrorComponentVisible] =
     React.useState(false);
 
-  const {colors} = useTheme();
-
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
-      <View
-        style={[
-          styles.container,
-          {
-            backgroundColor: colors.background,
-          },
-        ]}>
-        <Button onPress={() => setIsErrorComponentVisible(true)}>
-          Throw error
+      <Center props_styles={styles.container}>
+        <Button
+          text_style={{
+            color: Colors.WHITE,
+          }}
+          onPress={() => setIsErrorComponentVisible(true)}>
+          PRESS and Throw error
         </Button>
         {isErrorComponentVisible && <ComponentWithError />}
-      </View>
+      </Center>
     </ErrorBoundary>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    padding: 8,
-  },
-
-  title: {
-    fontSize: FONT_SIZE_16,
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  icon: {
-    fontSize: FONT_SIZE_20,
+    padding: SCALE_8,
+    backgroundColor: Colors.WARNING,
   },
 });
 

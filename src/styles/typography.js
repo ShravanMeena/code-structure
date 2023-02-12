@@ -29,3 +29,27 @@ export const FONT_BOLD = {
   fontFamily: FONT_FAMILY_BOLD,
   fontWeight: FONT_WEIGHT_BOLD,
 };
+
+// flex style
+export const FLEX_ROW_CENTER = {
+  flexDirection: 'row',
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+export const FLEX_COLUMN_CENTER = {
+  justifyContent: 'center',
+  alignItems: 'center',
+};
+
+export const FLEX_COLUMN_ALIGN_CENTER = {
+  display: 'flex',
+  alignItems: 'center',
+};
+
+export const FLEX_ROW_SPACE_BETWEEN = {
+  display: 'flex',
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+};

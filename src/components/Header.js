@@ -1,21 +1,29 @@
 import {View, StyleSheet, Switch} from 'react-native';
 import React, {useState} from 'react';
-import {useTheme} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
-import {themeTogglerAction} from '../redux/actions/themeAction';
-import {Colors} from '../styles';
 
+// actions
 import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
 } from '../redux/actions/giphyAction';
+import {themeTogglerAction} from '../redux/actions/themeAction';
+
+// ui - components
 import {Button} from '../ui';
+
+// styles
+import {SCALE_16} from '../styles/spacing';
+import {FLEX_ROW_SPACE_BETWEEN} from '../styles/typography';
+import {Colors} from '../styles';
 
 export default function Header() {
   const {colors} = useTheme();
   const dispatch = useDispatch();
   const {typeOfGif} = useSelector(state => state.giphyReducer);
   const [isEnabled, setIsEnabled] = useState(false);
+  const {navigate} = useNavigation();
 
   const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -31,9 +39,13 @@ export default function Header() {
     }
   };
 
-  const gettrendingGiff = () => {
+  const getTrendingGifHandler = () => {
     dispatch(selectFilterTypeAction('trending'));
     dispatch(getFilteredGiphyAction({page: 1}));
+  };
+
+  const navigateGateAboutMe = () => {
+    navigate('AboutMe');
   };
 
   const button = {
@@ -56,14 +68,22 @@ export default function Header() {
       <Button
         text_style={styles.text_style}
         props_styles={button}
-        onPress={gettrendingGiff}>
+        onPress={getTrendingGifHandler}>
         Trending GIF
+      </Button>
+
+      <Button
+        text_style={{
+          color: Colors.WARNING,
+        }}
+        onPress={navigateGateAboutMe}>
+        About ME
       </Button>
 
       <Switch
         trackColor={{false: Colors.WARNING, true: Colors.WHITE}}
         thumbColor={isEnabled ? Colors.WARNING : Colors.WHITE}
-        ios_backgroundColor="#3e3e3e"
+        ios_backgroundColor={Colors.ALERT}
         onValueChange={themeHandler}
         value={isEnabled}
       />
@@ -75,11 +95,8 @@ const styles = StyleSheet.create({
   container: {
     height: 50,
     width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 15,
+    ...FLEX_ROW_SPACE_BETWEEN,
+    paddingHorizontal: SCALE_16,
   },
   text_style: {
     color: Colors.WHITE,
