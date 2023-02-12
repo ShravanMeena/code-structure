@@ -1,4 +1,4 @@
-# Pillow Fund Assesment
+# 🥷🏻 Pillow Fund Assesment
 
 The Giphy store displays the trending GIFs and has the capability to display GIFs based on the input keywords.
 
@@ -14,16 +14,17 @@ The Giphy store displays the trending GIFs and has the capability to display GIF
 - Theme Toggler
 - Play/Pause GIFs
 
-## Technologies
+## 👾 Technologies
 
-I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux` and some more libraries - [explain just below](#)
+I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux` and some more libraries - [explained just below](#)
 
-- [React-native-fast-image](https://www.npmjs.com/package/react-native-fast-image): Performant React Native image component.
+- [React-native-fast-image](https://www.npmjs.com/package/react-native-fast-image): Performance React Native image component.
 - [react-native-video-player](https://www.npmjs.com/package/react-native-video-player): This player uses react-native-video for the video playback. So We can also play mp4 GIF.I just added and comment some code so you can see my work.
-  `NOTE- With this npm some libraries -- react-native-video react-native-vector-icons`--- Okay so obviously we imporve everything for now I used.
+  `NOTE- With this npm some libraries -- react-native-video react-native-vector-icons`
 - [babel-plugin-module-resolver](https://www.npmjs.com/package/babel-plugin-module-resolver) : This plugin can simplify the require/import paths in your project. For example, instead of using complex relative paths like ` ../../../../utils/my-utils`, you can write `utils/my-utils`.
+- [axios](https://www.npmjs.com/package/axios): Axios for http/api calling.
 
-## Setup
+## 🤷🏻‍♂️ Setup
 
 - download or clone the [repository](https://github.com/ShravanMeena/pillow-apk.git)
 - `npm install`
@@ -31,20 +32,23 @@ I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux`
 
 ## 🚀 Approach
 
-### Folder Struture:
+### 🫰 Folder Struture:
 
-![struture](https://raw.githubusercontent.com/ShravanMeena/pillow-apk/main/src/assets/images/folder_struture.png?token=GHSAT0AAAAAAB5K76VCATG2RFLQBP4FARKIY7JKG5Q)
+![struture](https://i.ibb.co/bBJ8KSb/folder-struture.png)
 
 ### 🤘 Code quality & consistency:
 
 - In this project I use absolute path for import ([What is absolute path?](https://dev.to/abrahamlawson/using-absolute-paths-in-react-native-24ak))
-- Helper function for managing common function like for showing error make a toast
-- I try write clean and efficinte code (You can see [here](https://github.com/ShravanMeena/pillow-apk))
-- For consistency I try to import everything proper way
-- And try to use a `global function for api` call, we can call GET/POST/DELETE/PUT api with only same function without thinking error handling every api call
+- Helper function for managing common function like for showing error as a toast.
+- I try to write clean and efficient code (You can see [here](https://github.com/ShravanMeena/pillow-apk))
+- For consistency I try to import everything in a proper sequence (- actions --> UI Component --> styles)
+- And try to use a `global function for api` call, so we can call GET/POST/DELETE/PUT api with only same function without thinking extra error handling for every api call.
 
 ## 😎 Reusability
 
-- So I have create reusbale components even title or heading
-- apiAxiosHandler is the best reusable method, with help of this we can call api and get response and error hadling in same place
-- for this i have create a proper `ui` folder so we can use them all over the code
+- So I have created reusabale helper functions.
+- for this I have create a proper `ui` folder so we can use them all over the code
+
+## 😎 Note
+
+- For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
