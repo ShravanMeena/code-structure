@@ -36,7 +36,7 @@ export const getFilteredGiphyAction = _params => {
         }
       }
 
-      const res = await axiosRequestHandler('get', null, url);
+      const res = await axiosRequestHandler({method: 'get', url});
 
       if (res.data) {
         if (res.data?.length < 5) {
@@ -78,7 +78,7 @@ export const getGiphyCategoriesActon = () => {
   try {
     return async dispatch => {
       const url = '/categories';
-      const res = await axiosRequestHandler('get', null, url);
+      const res = await axiosRequestHandler({method: 'get', url});
       if (res.data) {
         dispatch({
           type: GET_GIPHY_CATEGORIES,
@@ -100,7 +100,8 @@ export const giphySuggestionsAction = searchQuery => {
     return async dispatch => {
       const url = `/channels/search?q=${searchQuery}&limit=10`;
 
-      const res = await axiosRequestHandler('get', null, url);
+      const res = await axiosRequestHandler({method: 'get', url});
+
       if (res.data) {
         dispatch({
           type: GET_GIPHY_SEARCH_SUGGESTIONS,

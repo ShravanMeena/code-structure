@@ -20,7 +20,7 @@ const initialState = {
   isListEnd: false,
   typeOfGif: 'trending', //this is the type of gif:: means which type of api we call for ex type is trending or by category or via search
   pageNumberFromStore: 1, // page number save in store so we can use infinite scrolliing
-  lastQueryFromStore: '', //selected value like searchQuery and selected category
+  lastQueryFromStore: '', //this is use for pageination so it is remeber last value what we set
 };
 
 function giphyReducer(state = initialState, action) {

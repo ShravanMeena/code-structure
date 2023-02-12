@@ -19,22 +19,29 @@ import {Capitalize, keyGenerator} from '../utils/helper';
 import {Colors} from '../styles';
 
 function Category({item}) {
-  const dispatch = useDispatch();
-
   // theme colors
   const {colors} = useTheme();
 
-  const lastQueryFromStore = useSelector(
-    state => state.giphyReducer?.lastQueryFromStore,
-  );
+  const dispatch = useDispatch();
 
-  var replaced = item.name?.split(' ')?.join('');
+  const {lastQueryFromStore} = useSelector(state => state.giphyReducer);
+
+  /*
+    for example a category name food & dring , but in giphy category api we need to send food & drink to food-drink .
+
+    So what i did just below
+    1. create a replaced and space " " remove by empty ""
+    2. in  category varibale we replace & with - so the final value is somehting somthing-somethin
+    3. we done our workk
+  */
+  let replaced = item.name?.split(' ')?.join('');
   let category = replaced?.split('&')?.join('-');
 
-  // active tab conditions
+  // active button show in categories condition
   let activeTab = lastQueryFromStore?.includes(category);
 
   const categoryViaFetchData = () => {
+    //here we set that now time to call categiry api
     dispatch(selectFilterTypeAction('category'));
 
     dispatch(
@@ -68,9 +75,7 @@ function Category({item}) {
 export default function Categories() {
   const dispatch = useDispatch();
 
-  const categoriesData = useSelector(
-    state => state.giphyReducer.categoriesData,
-  );
+  const {categoriesData} = useSelector(state => state.giphyReducer);
 
   useEffect(() => {
     dispatch(getGiphyCategoriesActon());

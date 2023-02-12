@@ -6,13 +6,13 @@ import {useDispatch} from 'react-redux';
 import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
-} from '../../redux/actions/giphyAction';
+} from '../redux/actions/giphyAction';
 
 // ui - components
-import {Container, Input} from '../../ui';
+import {Container, Input} from '../ui';
 
 // custom hooks
-import {useDebounce} from '../../hooks';
+import {useDebounce} from '../hooks';
 
 export default function SearchInput() {
   const dispatch = useDispatch();

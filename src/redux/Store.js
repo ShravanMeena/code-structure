@@ -1,7 +1,6 @@
 import {createStore, combineReducers, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
-import giphyReducer from './reducers/giphyReducer';
-import themeReducer from './reducers/themeReducer';
+import {themeReducer, giphyReducer} from './reducers';
 
 const rootReducer = combineReducers({
   giphyReducer,

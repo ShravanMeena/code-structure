@@ -1,6 +1,5 @@
 import {
   View,
-  Text,
   FlatList,
   StyleSheet,
   Pressable,
@@ -12,12 +11,14 @@ import React, {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 // ui - components
-import GifImage from '../../components/GifImage';
-import WaitIndicator from '../../ui/loader';
-import Header from '../../components/Header';
-import SearchInput from './SearchInput';
-import Categories from '../../components/Categories';
-import {Button, Center, Container} from '../../ui';
+import {
+  Header,
+  Categories,
+  GifImage,
+  ErrorBoundaryTest,
+  SearchInput,
+} from '../../components';
+import {Button, Center, Container, Heading, Loader} from '../../ui';
 
 // helper
 import {handlerActions, keyGenerator} from '../../utils/helper';
@@ -45,6 +46,7 @@ export default function HomeScreen() {
 
   const dispatch = useDispatch();
 
+  // destruturing
   const {
     typeOfGif,
     lastQueryFromStore,
@@ -80,13 +82,18 @@ export default function HomeScreen() {
   const renderFooter = () => (
     <Center props_styles={styles.footer}>
       {moreLoading && <ActivityIndicator />}
-      {isListEnd && <Text>No more GIPHY at the moment</Text>}
+      {isListEnd && (
+        <>
+          <ErrorBoundaryTest />
+          <Heading>No more GIPHY at the moment</Heading>
+        </>
+      )}
     </Center>
   );
 
   const renderEmpty = () => (
     <Center>
-      <Text>No Data at the moment</Text>
+      <Heading>No Data at the moment</Heading>
       <Button onPress={() => requestAPI()}>Refresh</Button>
     </Center>
   );
@@ -101,7 +108,7 @@ export default function HomeScreen() {
       <Categories />
       <Container>
         {loading ? (
-          <WaitIndicator />
+          <Loader />
         ) : (
           <FlatList
             removeClippedSubviews
