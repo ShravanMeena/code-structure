@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Provider} from 'react-redux';
 
-import MainNavigation from './src/navigations/MainNavigation';
+import {MainNavigation} from './src/navigations';
 
 import {store} from './src/redux/Store';
 
