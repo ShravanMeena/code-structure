@@ -1,7 +1,9 @@
 import {StyleSheet, TextInput} from 'react-native';
 import React from 'react';
 import {useTheme} from '@react-navigation/native';
-import {BORDER_RADIUS_6, SCALE_10} from '../../styles/spacing';
+
+// styles
+import {BORDER_RADIUS_6, SCALE_10} from '@styles/spacing';
 
 export default function Input({setValue, placeholder}) {
   // theme colors

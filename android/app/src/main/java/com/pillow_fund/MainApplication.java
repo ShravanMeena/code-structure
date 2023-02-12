@@ -1,4 +1,4 @@
-package com.pillow;
+package com.pillow_fund;
 
 import android.app.Application;
 import com.facebook.react.PackageList;

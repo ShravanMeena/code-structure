@@ -2,12 +2,18 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "./src/*"
-      ],
-      "@src/*": [
-        "./src/*"
-      ],
+      "src/*": ["./src/*"],
+      "components/*": ["./src/components/*"],
+      "screens/*": ["./src/screens/*"],
+      "ui/*": ["./src/ui/*"],
+      "utils/*": ["./src/utils/*"],
+      "hooks/*": ["./src/hooks/*"],
+      "navigations/*": ["./src/navigations/*"],
+      "assets/*": ["./src/assets/*"],
+      "api/*": ["./src/api/*"],
+      "redux/*": ["./src/redux/*"],
+      "config/*": ["./src/config/*"],
+      "styles/*": ["./src/styles/*"],
     }
   }
 }

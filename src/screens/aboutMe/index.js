@@ -2,11 +2,11 @@ import {useNavigation} from '@react-navigation/native';
 import React from 'react';
 
 // ui - components
-import {Center, Container, Heading, Description, Base, Button} from '../../ui';
+import {Center, Container, Heading, Description, Base, Button} from '@ui';
 
 // styles
-import {Colors} from '../../styles';
-import {SCALE_18} from '../../styles/spacing';
+import {Colors} from '@styles';
+import {SCALE_18} from '@styles/spacing';
 
 export default function AboutMe() {
   const {goBack} = useNavigation();

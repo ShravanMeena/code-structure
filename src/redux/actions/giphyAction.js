@@ -1,4 +1,4 @@
-import {axiosRequestHandler} from '../../api';
+import {axiosRequestHandler} from '@api';
 import {
   API_FAILURE,
   API_LIST_END,

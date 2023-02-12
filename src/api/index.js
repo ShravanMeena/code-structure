@@ -1,6 +1,6 @@
 import axios from 'axios';
-import {Config} from '../config';
-import {showToast} from '../utils/helper';
+import {Config} from '@config';
+import {showToast} from '@utils/helper';
 
 export const axiosRequestHandler = options => {
   // method:: GET/POST/PUT/DELETE

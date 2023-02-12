@@ -7,17 +7,17 @@ import {TouchableOpacity, StyleSheet} from 'react-native';
 import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
-} from '../../redux/actions/giphyAction';
+} from '@redux/actions/giphyAction';
 
 // ui - components
-import {Heading} from '../../ui';
+import {Heading} from '@ui';
 
 // helper
-import {Capitalize} from '../../utils/helper';
+import {Capitalize} from '@utils/helper';
 
 // styles
-import {Colors} from '../../styles';
-import {BORDER_RADIUS_4, SCALE_10, SCALE_8} from '../../styles/spacing';
+import {Colors} from '@styles';
+import {BORDER_RADIUS_4, SCALE_10, SCALE_8} from '@styles/spacing';
 
 export default function Category({item}) {
   // theme colors

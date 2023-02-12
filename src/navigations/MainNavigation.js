@@ -5,15 +5,15 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 // selectors and actions
 import {useDispatch, useSelector} from 'react-redux';
-import {themeTogglerAction} from '../redux/actions/themeAction';
+import {themeTogglerAction} from '@redux/actions/themeAction';
 
 // ui - components
 import StackNavigator from './StackNavigator';
 import CustomStatusBar from './CustomStatusBar';
 
 // style
-import {Colors} from '../styles';
-import {generateTheme} from '../utils/helper';
+import {Colors} from '@styles';
+import {generateTheme} from '@utils/helper';
 
 const MainNavigation = () => {
   const dispatch = useDispatch();

@@ -7,16 +7,16 @@ import {useDispatch, useSelector} from 'react-redux';
 import {
   getFilteredGiphyAction,
   selectFilterTypeAction,
-} from '../redux/actions/giphyAction';
-import {themeTogglerAction} from '../redux/actions/themeAction';
+} from '@redux/actions/giphyAction';
+import {themeTogglerAction} from '@redux/actions/themeAction';
 
 // ui - components
-import {Button} from '../ui';
+import {Button} from '@ui';
 
 // styles
-import {SCALE_16} from '../styles/spacing';
-import {FLEX_ROW_SPACE_BETWEEN} from '../styles/typography';
-import {Colors} from '../styles';
+import {SCALE_16} from '@styles/spacing';
+import {FLEX_ROW_SPACE_BETWEEN} from '@styles/typography';
+import {Colors} from '@styles';
 
 export default function Header() {
   const {colors} = useTheme();

@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "PILLOW.app"
-               BlueprintName = "PILLOW"
-               ReferencedContainer = "container:PILLOW.xcodeproj">
+               BuildableName = "pillow_fund.app"
+               BlueprintName = "pillow_fund"
+               ReferencedContainer = "container:pillow_fund.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "PILLOWTests.xctest"
-               BlueprintName = "PILLOWTests"
-               ReferencedContainer = "container:PILLOW.xcodeproj">
+               BuildableName = "pillow_fundTests.xctest"
+               BlueprintName = "pillow_fundTests"
+               ReferencedContainer = "container:pillow_fund.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PILLOW.app"
-            BlueprintName = "PILLOW"
-            ReferencedContainer = "container:PILLOW.xcodeproj">
+            BuildableName = "pillow_fund.app"
+            BlueprintName = "pillow_fund"
+            ReferencedContainer = "container:pillow_fund.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "PILLOW.app"
-            BlueprintName = "PILLOW"
-            ReferencedContainer = "container:PILLOW.xcodeproj">
+            BuildableName = "pillow_fund.app"
+            BlueprintName = "pillow_fund"
+            ReferencedContainer = "container:pillow_fund.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

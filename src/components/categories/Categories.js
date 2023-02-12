@@ -3,16 +3,16 @@ import React, {useEffect, useMemo} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 // actions
-import {getGiphyCategoriesActon} from '../../redux/actions/giphyAction';
+import {getGiphyCategoriesActon} from '@redux/actions/giphyAction';
 
 // ui - components
 import Category from './Category';
 
 // helper
-import {keyGenerator} from '../../utils/helper';
+import {keyGenerator} from '@utils/helper';
 
 // styles
-import {SCALE_10} from '../../styles/spacing';
+import {SCALE_10} from '@styles/spacing';
 
 export default function Categories() {
   const dispatch = useDispatch();

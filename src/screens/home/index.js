@@ -12,7 +12,7 @@ import {
   ErrorBoundaryTest,
   SearchInput,
   Categories,
-} from '../../components';
+} from '@components';
 
 import {
   Base,
@@ -22,16 +22,16 @@ import {
   Heading,
   Loader,
   Description,
-} from '../../ui';
+} from '@ui';
 
 // helper
-import {handlerActions, keyGenerator} from '../../utils/helper';
-import {getFilteredGiphyAction} from '../../redux/actions/giphyAction';
+import {handlerActions, keyGenerator} from '@utils/helper';
+import {getFilteredGiphyAction} from '@redux/actions/giphyAction';
 
 // styles
-import {BORDER_RADIUS_4, SCALE_10} from '../../styles/spacing';
-import {FLEX_COLUMN_ALIGN_CENTER} from '../../styles/typography';
-import {Colors} from '../../styles';
+import {BORDER_RADIUS_4, SCALE_10} from '@styles/spacing';
+import {FLEX_COLUMN_ALIGN_CENTER} from '@styles/typography';
+import {Colors} from '@styles';
 
 function MyGif({item}) {
   const [play, setPlay] = useState(true);

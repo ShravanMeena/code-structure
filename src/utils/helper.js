@@ -1,7 +1,7 @@
 import {Alert} from 'react-native';
 
 // style
-import {Colors} from '../styles';
+import {Colors} from '@styles';
 // import {ToastAndroid} from 'react-native';
 
 /*

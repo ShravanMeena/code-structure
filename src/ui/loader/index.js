@@ -2,7 +2,7 @@ import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import React from 'react';
 
 // style
-import {FLEX_COLUMN_CENTER} from '../../styles/typography';
+import {FLEX_COLUMN_CENTER} from '@styles/typography';
 
 export default function WaitIndicator() {
   return (

@@ -5,11 +5,11 @@ import ErrorBoundary from 'react-native-error-boundary';
 // ui - components
 import ComponentWithError from './ComponentWithError';
 import ErrorFallback from './ErrorFallback';
-import {Button, Center} from '../ui';
+import {Button, Center} from '@ui';
 
 // styles
-import {Colors} from '../styles';
-import {SCALE_8} from '../styles/spacing';
+import {Colors} from '@styles';
+import {SCALE_8} from '@styles/spacing';
 
 const ErrorBoundaryTest = () => {
   const [isErrorComponentVisible, setIsErrorComponentVisible] =
