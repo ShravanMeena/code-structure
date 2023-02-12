@@ -44,11 +44,11 @@ I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux`
 - For consistency I try to import everything in a proper sequence (- actions --> UI Component --> styles)
 - And try to use a `global function for api` call, so we can call GET/POST/DELETE/PUT api with only same function without thinking extra error handling for every api call.
 
-## 😎 Reusability
+### 😎 Reusability
 
 - So I have created reusabale helper functions.
 - for this I have create a proper `ui` folder so we can use them all over the code
 
-## 🫰 Note
+# 🫰 Note
 
 - For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
