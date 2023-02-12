@@ -1,26 +1,25 @@
-import {View, FlatList, Pressable, StyleSheet} from 'react-native';
-import React, {useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
+import React from 'react';
 import {useTheme} from '@react-navigation/native';
+import {useDispatch, useSelector} from 'react-redux';
+import {TouchableOpacity, StyleSheet} from 'react-native';
 
 // actions
 import {
   getFilteredGiphyAction,
-  getGiphyCategoriesActon,
   selectFilterTypeAction,
-} from '../redux/actions/giphyAction';
+} from '../../redux/actions/giphyAction';
 
 // ui - components
-import {Heading} from '../ui';
+import {Heading} from '../../ui';
 
 // helper
-import {Capitalize, keyGenerator} from '../utils/helper';
+import {Capitalize} from '../../utils/helper';
 
 // styles
-import {Colors} from '../styles';
-import {BORDER_RADIUS_4, SCALE_10, SCALE_8} from '../styles/spacing';
+import {Colors} from '../../styles';
+import {BORDER_RADIUS_4, SCALE_10, SCALE_8} from '../../styles/spacing';
 
-function Category({item}) {
+export default function Category({item}) {
   // theme colors
   const {colors} = useTheme();
 
@@ -56,7 +55,7 @@ function Category({item}) {
   };
 
   return (
-    <Pressable
+    <TouchableOpacity
       style={[
         styles.categoryTabs,
         {
@@ -70,38 +69,11 @@ function Category({item}) {
         }}>
         {Capitalize(item.name)}
       </Heading>
-    </Pressable>
-  );
-}
-
-export default function Categories() {
-  const dispatch = useDispatch();
-
-  const {categoriesData} = useSelector(state => state.giphyReducer);
-
-  useEffect(() => {
-    dispatch(getGiphyCategoriesActon());
-  }, []);
-
-  return (
-    <View style={styles.container}>
-      <FlatList
-        removeClippedSubviews
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={categoriesData}
-        renderItem={({item}) => <Category item={item} />}
-        keyExtractor={keyGenerator}
-      />
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
-    marginVertical: SCALE_10,
-    paddingHorizontal: SCALE_10,
-  },
   categoryTabs: {
     borderWidth: 1,
     paddingVertical: SCALE_8,

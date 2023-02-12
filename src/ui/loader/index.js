@@ -1,6 +1,9 @@
 import {View, ActivityIndicator, StyleSheet} from 'react-native';
 import React from 'react';
 
+// style
+import {FLEX_COLUMN_CENTER} from '../../styles/typography';
+
 export default function WaitIndicator() {
   return (
     <View const={styles.loading}>
@@ -12,7 +15,6 @@ export default function WaitIndicator() {
 const styles = StyleSheet.create({
   loading: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    ...FLEX_COLUMN_CENTER,
   },
 });

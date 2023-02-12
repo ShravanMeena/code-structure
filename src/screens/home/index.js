@@ -1,5 +1,5 @@
 import {FlatList, StyleSheet, Pressable, ActivityIndicator} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
 // selectors and actions
 import {useDispatch, useSelector} from 'react-redux';
@@ -7,10 +7,10 @@ import {useDispatch, useSelector} from 'react-redux';
 // ui - components
 import {
   Header,
-  Categories,
   GifImage,
   ErrorBoundaryTest,
   SearchInput,
+  Categories,
 } from '../../components';
 
 import {
@@ -113,6 +113,9 @@ export default function HomeScreen() {
     </Center>
   );
 
+  const renderItem = ({item}) => <MyGif item={item} />;
+  const memoizedValue = useMemo(() => renderItem, [data]);
+
   return (
     <Base>
       {/* top header for toggle theme and logo */}
@@ -127,11 +130,12 @@ export default function HomeScreen() {
         ) : (
           <FlatList
             removeClippedSubviews
+            initialNumToRender={4}
             showsVerticalScrollIndicator={false}
             // eslint-disable-next-line react-native/no-inline-styles
             contentContainerStyle={{flexGrow: 1}}
             data={data}
-            renderItem={({item}) => <MyGif item={item} />}
+            renderItem={memoizedValue}
             ListFooterComponent={renderFooter}
             ListEmptyComponent={renderEmpty}
             onEndReachedThreshold={0.2}

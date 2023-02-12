@@ -1,6 +1,9 @@
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 
+// styles
+import {FLEX_COLUMN_CENTER} from '../../styles/typography';
+
 export default function Container({children}) {
   return (
     <View style={styles.main}>
@@ -11,9 +14,7 @@ export default function Container({children}) {
 
 const styles = StyleSheet.create({
   main: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
+    ...FLEX_COLUMN_CENTER,
     width: '100%',
   },
   container: {
