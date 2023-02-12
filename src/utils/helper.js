@@ -1,5 +1,6 @@
 import {Alert} from 'react-native';
-import {getFilteredGiphyAction} from '../redux/actions/giphyAction';
+
+// style
 import {Colors} from '../styles';
 // import {ToastAndroid} from 'react-native';
 
@@ -45,6 +46,7 @@ export const handlerActions = (
   typeOfGif,
   pageNumberFromStore,
   lastQueryFromStore,
+  getFilteredGiphyAction,
 ) => {
   let page = pageNumberFromStore + 1;
   let type = typeOfGif;

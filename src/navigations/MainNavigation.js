@@ -8,7 +8,8 @@ import {useDispatch, useSelector} from 'react-redux';
 import {themeTogglerAction} from '../redux/actions/themeAction';
 
 // ui - components
-import {CustomStatusBar, StackNavigator} from './';
+import StackNavigator from './StackNavigator';
+import CustomStatusBar from './CustomStatusBar';
 
 // style
 import {Colors} from '../styles';

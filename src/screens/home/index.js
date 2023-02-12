@@ -83,6 +83,7 @@ export default function HomeScreen() {
         typeOfGif,
         pageNumberFromStore,
         lastQueryFromStore,
+        getFilteredGiphyAction,
       );
     }
   };
