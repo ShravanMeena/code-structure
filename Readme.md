@@ -32,7 +32,7 @@ I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux`
 
 ## 🚀 Approach
 
-### 🫰 Folder Struture:
+### 📓 Folder Struture:
 
 ![struture](https://i.ibb.co/bBJ8KSb/folder-struture.png)
 
@@ -49,6 +49,6 @@ I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux`
 - So I have created reusabale helper functions.
 - for this I have create a proper `ui` folder so we can use them all over the code
 
-## 😎 Note
+## 🫰 Note
 
 - For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
