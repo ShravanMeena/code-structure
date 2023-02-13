@@ -51,4 +51,5 @@ I used `React Native`, `React-Navigation`, `Redux`, `Redux-Thunk`, `React-Redux`
 
 # 🫰 Note
 
+- Please ignore loading time in GIF beacause I used original gif, So it will take some time and we can improve but api's response are not similary so that is the reason and Yes We can improve it and add some more conditions However I focus mainly on `code cleanup and code quality`
 - For any doubts ,feel free to connect on mail `shravanmeena47@gmail.com`.
