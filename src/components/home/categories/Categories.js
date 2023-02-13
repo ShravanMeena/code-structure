@@ -1,5 +1,7 @@
 import {View, FlatList, StyleSheet} from 'react-native';
 import React, {useEffect, useMemo} from 'react';
+
+// third parties
 import {useDispatch, useSelector} from 'react-redux';
 
 // actions

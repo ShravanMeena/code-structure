@@ -1,9 +1,11 @@
 import React, {useEffect} from 'react';
 import {Appearance} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-// selectors and actions
+// third parties
+import {NavigationContainer} from '@react-navigation/native';
+
+// actions
 import {useDispatch, useSelector} from 'react-redux';
 import {themeTogglerAction} from '@redux/actions/themeAction';
 

@@ -1,8 +1,8 @@
 import {Pressable, StyleSheet} from 'react-native';
 import React, {useState} from 'react';
+
+// ui - components
 import GifImage from './GifImage';
-// TODO: Waht i did here if click on gif then conditionaly changed image urls
-// GifVideo, // TODO:: So if you want to play gif as a video show you can use video componets
 
 // styles
 import {FLEX_COLUMN_ALIGN_CENTER} from '@styles/typography';
@@ -20,17 +20,15 @@ export default function MyGifCard({item}) {
     ? item.gif?.images?.original
     : item.images?.original;
 
-  // i get links which is playable from response
+  // get links which is playable
   let playLinks = url;
 
-  // i get links which is not playble  from response this is only images
+  // i get links which is only webp
   let pauseLinks = webp;
 
   return (
     <Pressable onPress={playAndPauseHandler} style={styles.item}>
-      {/* if you wants to use gif as image then you can use this one.... i am using GifImage componets */}
       <GifImage uri={play ? playLinks : pauseLinks} />
-
       {/* <GifVideo item={item} /> */}
     </Pressable>
   );

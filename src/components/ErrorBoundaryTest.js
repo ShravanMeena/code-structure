@@ -1,5 +1,7 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {StyleSheet} from 'react-native';
+
+// third parties
 import ErrorBoundary from 'react-native-error-boundary';
 
 // ui - components
@@ -12,8 +14,7 @@ import {Colors} from '@styles';
 import {SCALE_8} from '@styles/spacing';
 
 const ErrorBoundaryTest = () => {
-  const [isErrorComponentVisible, setIsErrorComponentVisible] =
-    React.useState(false);
+  const [isErrorComponentVisible, setIsErrorComponentVisible] = useState(false);
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

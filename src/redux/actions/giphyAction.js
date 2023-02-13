@@ -1,4 +1,3 @@
-import {axiosRequestHandler} from '@api';
 import {
   API_FAILURE,
   API_LIST_END,
@@ -7,6 +6,8 @@ import {
   GET_GIPHY_SEARCH_SUGGESTIONS,
   TYPE_OF_GIF_API,
 } from '../types';
+
+import {axiosRequestHandler} from '@api';
 
 // get all type of gif by filter :: this is a common where we can call api with various conditions
 export const getFilteredGiphyAction = _params => {
@@ -131,16 +132,10 @@ export const giphySuggestionsAction = searchQuery => {
 
 // it is define for which api we calll...example: -- : TYPE:SEARCH_API, CATEGORY_API, TRENDING_API
 export const selectFilterTypeAction = type => {
-  try {
-    return async dispatch => {
-      dispatch({
-        type: TYPE_OF_GIF_API,
-        payload: type,
-      });
-    };
-    // eslint-disable-next-line no-unreachable
-  } catch (error) {
-    // Add custom logic to handle errors
-    console.log(error, 'error');
-  }
+  return async dispatch => {
+    dispatch({
+      type: TYPE_OF_GIF_API,
+      payload: type,
+    });
+  };
 };

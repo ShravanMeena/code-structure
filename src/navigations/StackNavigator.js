@@ -1,4 +1,6 @@
 import React from 'react';
+
+// third parties
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 // screens

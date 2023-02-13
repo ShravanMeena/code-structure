@@ -1,7 +1,7 @@
 import {FlatList, StyleSheet, ActivityIndicator} from 'react-native';
 import React, {useEffect, useMemo, useState} from 'react';
 
-// selectors and actions
+//  actions
 import {useDispatch, useSelector} from 'react-redux';
 
 // ui - components
@@ -101,11 +101,8 @@ export default function HomeScreen() {
 
   return (
     <Base>
-      {/* top header for toggle theme and logo */}
       <Header />
-      {/* text input for searching GIF */}
       <SearchInput />
-      {/* Lsit of Categories  */}
       <Categories />
       <Container>
         {loading ? (
@@ -115,8 +112,7 @@ export default function HomeScreen() {
             removeClippedSubviews
             initialNumToRender={4}
             showsVerticalScrollIndicator={false}
-            // eslint-disable-next-line react-native/no-inline-styles
-            contentContainerStyle={{flexGrow: 1}}
+            contentContainerStyle={styles.contentContainerStyle}
             data={data}
             renderItem={memoizedValue}
             ListFooterComponent={renderFooter}
@@ -136,4 +132,5 @@ const styles = StyleSheet.create({
     height: 500,
     ...FLEX_COLUMN_ALIGN_CENTER,
   },
+  contentContainerStyle: {flexGrow: 1},
 });

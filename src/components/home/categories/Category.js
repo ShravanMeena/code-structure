@@ -1,7 +1,9 @@
 import React from 'react';
 import {useTheme} from '@react-navigation/native';
-import {useDispatch, useSelector} from 'react-redux';
 import {TouchableOpacity, StyleSheet} from 'react-native';
+
+// third parties
+import {useDispatch, useSelector} from 'react-redux';
 
 // actions
 import {
@@ -28,12 +30,11 @@ export default function Category({item}) {
   const {lastQueryFromStore} = useSelector(state => state.giphyReducer);
 
   /*
-    for example a category name food & dring , but in giphy category api we need to send food & drink to food-drink .
+    for example a category name food & drink , but in giphy category api we need to send food & drink to food-drink .
 
     So what i did just below
-    1. create a replaced and space " " remove by empty ""
-    2. in  category varibale we replace & with - so the final value is somehting somthing-somethin
-    3. we done our workk
+    1. create a replaced  var and  " " remove by  ""
+    2. in  category varibale we replace`&` with `-`
   */
   let replaced = item.name?.split(' ')?.join('');
   let category = replaced?.split('&')?.join('-');
@@ -42,7 +43,6 @@ export default function Category({item}) {
   let activeTab = lastQueryFromStore?.includes(category);
 
   const categoryViaFetchData = () => {
-    //here we set that now time to call categiry api
     dispatch(selectFilterTypeAction('category'));
 
     dispatch(

@@ -1,5 +1,7 @@
 import {View, StyleSheet, Switch} from 'react-native';
 import React, {useState} from 'react';
+
+// third parties
 import {useNavigation, useTheme} from '@react-navigation/native';
 import {useDispatch, useSelector} from 'react-redux';
 
